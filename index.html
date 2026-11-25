@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Fiados">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0BAMAAADP4xsBAAAAMFBMVEX////7/P7z9f3e5fnL1vbJ1vK8y/Kit+6FoOlqi+VTeOFBat4tW9shUdkdTtjWKDkdJ1sfAAAD/klEQVR42u2aT4gbVRzHPzOTrLiHdFitXp+Npayn2W1QvAVc/5ykB6MoCHuoVOxlLagUoQgi4qLYQxVR2oqCpQste9u2oAzVgtXqDl4sbbN9BwVFyU5z0k1mxsNkNpM1kcm8javLyyXvvQyf/Pjl+/t935uJ0WBULxON1miN1miN1miN1uhthy70XW2K4SiNzFEPS2YiK3pocn92P7TIkViRCd3sDndEfkZ0MxNa5NKD2FpdN/OBmlsbtchJEro9abRGa7RGa/Q23k5Si9/GKdYyYVqL2yUhRuOfNp07/Ft2VlJJavFptEZr9H8HPX7DGRXatL1RucxkWBvoMoVs0R1Ojm6N+nfLyeIde6fvCWv174eLeqNhrB8KJyYqF87Gw937bTBnZi6fUHGZsV/SVxw7AjB5KZl/MqfgMr1XPS8A6731+dMqCjF6kzgHPNhVXXFWAW31Tp8EDgHX51mQwD4F9C7g03K5XK68IIEijFWh/dRRvn4W2KugkCqwugqsrvzwFViOZwFLchzvqm8PgJiZb0h0BHDVA6pYwEnM0Atcrr+tELUNuPEw9BywmYbQZTqEby4dVykZAWEiW9n5KgAnhA+U2pPpQJBe8AFMgYhUm2oBiNLJ8fGBOUQw/P767xUTJhMH8KgDz7giVEWbdBMyVoXQow0UPrIuqibEBOqd8StAy2fNAyzue10RXU5kbdz76ovAtxC9C8CdB0/ZSi4zCTze7b7RlzUwZdzDHz11QuUssyGwaxIIz3RmD1RVEiJ6ZkHsMteSInxC5SzzRXpHELxxtDN67OV4/dDHuV3GSEd9+uGEzDk38BjYrjOhrXSuL6c2HqL1iDuwXWdDA39WKpXKaxtCFEH74GCVmRkrpr2ysrJyHLg/nag6v0qlklkvxnZviKYtu702H3oiKcY1CYU4I+YMFJDgp5ri8OipBB25nWTvmb/yGRj4YKea4vBoJ2n+nARmgLv3C0tg4mI53c6VA20DseRuxDsFboIxixlJ9tiwnB8tIIrRLaDowO/AAXtX4N91DFjMjTYcCOKEtF1gNvaF287PGW+dc6Dl5kabdlcELvAQrC0Cu/dZzwngfH7xFVLOeBbYCbzT/bh9JD/aSDnjb0BRwI/rSYjelPldZgy41VkwfBvjJRcWRNwOww9/quV3GbO74YuLZgoI5s/cJLyycHhZZbPwx4HUZGkpcYQLn79/2h3RHbPbf47tZQR3zEy8UR2kzUiOCj0V+qNCX9yp74dotEajn8vo5zJafBqt0RqtXebfcxmZM0i5pS6TtpkhXKYkt1YhcnNS3Q9dykMuZdO13JSg+/2Mef5v3MhajSW5CeT+UevOp9EardEardEardH/b/Rf/yoi/EyL0WMAAAAASUVORK5CYII=">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0BAMAAADP4xsBAAAAMFBMVEX////7/P7z9f3e5fnL1vbJ1vK8y/Kit+6FoOlqi+VTeOFBat4tW9shUdkdTtjWKDkdJ1sfAAAD/klEQVR42u2aT4gbVRzHPzOTrLiHdFitXp+Npayn2W1QvAVc/5ykB6MoCHuoVOxlLagUoQgi4qLYQxVR2oqCpQste9u2oAzVgtXqDl4sbbN9BwVFyU5z0k1mxsNkNpM1kcm8javLyyXvvQyf/Pjl+/t935uJ0WBULxON1miN1miN1miN1uhthy70XW2K4SiNzFEPS2YiK3pocn92P7TIkViRCd3sDndEfkZ0MxNa5NKD2FpdN/OBmlsbtchJEro9abRGa7RGa/Q23k5Si9/GKdYyYVqL2yUhRuOfNp07/Ft2VlJJavFptEZr9H8HPX7DGRXatL1RucxkWBvoMoVs0R1Ojm6N+nfLyeIde6fvCWv174eLeqNhrB8KJyYqF87Gw937bTBnZi6fUHGZsV/SVxw7AjB5KZl/MqfgMr1XPS8A6731+dMqCjF6kzgHPNhVXXFWAW31Tp8EDgHX51mQwD4F9C7g03K5XK68IIEijFWh/dRRvn4W2KugkCqwugqsrvzwFViOZwFLchzvqm8PgJiZb0h0BHDVA6pYwEnM0Atcrr+tELUNuPEw9BywmYbQZTqEby4dVykZAWEiW9n5KgAnhA+U2pPpQJBe8AFMgYhUm2oBiNLJ8fGBOUQw/P767xUTJhMH8KgDz7giVEWbdBMyVoXQow0UPrIuqibEBOqd8StAy2fNAyzue10RXU5kbdz76ovAtxC9C8CdB0/ZSi4zCTze7b7RlzUwZdzDHz11QuUssyGwaxIIz3RmD1RVEiJ6ZkHsMteSInxC5SzzRXpHELxxtDN67OV4/dDHuV3GSEd9+uGEzDk38BjYrjOhrXSuL6c2HqL1iDuwXWdDA39WKpXKaxtCFEH74GCVmRkrpr2ysrJyHLg/nag6v0qlklkvxnZviKYtu702H3oiKcY1CYU4I+YMFJDgp5ri8OipBB25nWTvmb/yGRj4YKea4vBoJ2n+nARmgLv3C0tg4mI53c6VA20DseRuxDsFboIxixlJ9tiwnB8tIIrRLaDowO/AAXtX4N91DFjMjTYcCOKEtF1gNvaF287PGW+dc6Dl5kabdlcELvAQrC0Cu/dZzwngfH7xFVLOeBbYCbzT/bh9JD/aSDnjb0BRwI/rSYjelPldZgy41VkwfBvjJRcWRNwOww9/quV3GbO74YuLZgoI5s/cJLyycHhZZbPwx4HUZGkpcYQLn79/2h3RHbPbf47tZQR3zEy8UR2kzUiOCj0V+qNCX9yp74dotEajn8vo5zJafBqt0RqtXebfcxmZM0i5pS6TtpkhXKYkt1YhcnNS3Q9dykMuZdO13JSg+/2Mef5v3MhajSW5CeT+UevOp9EardEardEardH/b/Rf/yoi/EyL0WMAAAAASUVORK5CYII=">
+<title>Caderno de Fiados</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE: prático, de balcão, rápido de usar com uma mão no iPhone.
+   IDEA: a caderneta de fiado do comércio — folha pautada com margem vermelha.
+   PICTURE: a própria lista de fiados, linhas da caderneta com valores grandes.
+   COLOUR and TYPE: papel branco, tinta azul de caneta, margem vermelha; Caveat para o "escrito à mão", Inter para números.
+   LAYOUT: topo com totais, filtros, lista; folhas que sobem de baixo para detalhes e cadastro. */
+:root{color-scheme:light dark;
+--bg:light-dark(#f7f9fe,#0e1526);--paper:light-dark(#ffffff,#141d33);--line:light-dark(#dfe7f6,#222e4b);
+--ink:light-dark(#14213d,#e7edfb);--mut:light-dark(#5b6782,#9aa7c4);--blue:light-dark(#1d4ed8,#8fb0ff);
+--blueBg:light-dark(#e8efff,#1c2a52);--red:light-dark(#d62839,#ff7070);--redBg:light-dark(#fdecee,#3a1820);
+--amb:light-dark(#a15c00,#ffc266);--ambBg:light-dark(#fff4e0,#3a2a10);--sh:0 8px 28px light-dark(#14213d22,#0008)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Inter,system-ui,-apple-system,sans-serif;overflow-x:clip;-webkit-tap-highlight-color:transparent}
+button,input,textarea,select{font:inherit;color:inherit}
+button{cursor:pointer}
+.wrap{max-width:720px;margin:0 auto;padding:max(16px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) 120px max(16px,env(safe-area-inset-left))}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+h1{font:700 42px/1.05 Caveat,cursive;margin:4px 0;color:var(--blue)}
+.ic{width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:var(--paper);display:grid;place-items:center;flex:none}
+.ic svg{width:22px;height:22px}
+.sync{font-size:13px;color:var(--mut);margin:0 0 14px}
+.tot{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:14px}
+.tot div{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:10px 12px}
+.tot small{display:block;font-size:13px;color:var(--mut)}
+.tot b{font-size:clamp(16px,4.6vw,22px);white-space:nowrap;font-variant-numeric:tabular-nums}
+.tot .r b{color:var(--red)}
+.chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;margin-bottom:10px;scrollbar-width:none}
+.chip{flex:none;height:40px;padding:0 14px;border-radius:20px;border:1px solid var(--line);background:var(--paper);font-size:15px}
+.chip[aria-pressed=true]{background:var(--blue);color:var(--paper);border-color:var(--blue)}
+.search{width:100%;height:46px;border-radius:12px;border:1px solid var(--line);background:var(--paper);padding:0 14px;font-size:16px;margin-bottom:12px}
+.book{background:var(--paper);border-radius:16px;box-shadow:var(--sh);overflow:hidden;position:relative}
+.book::before{content:"";position:absolute;left:44px;top:0;bottom:0;width:2px;background:var(--red);opacity:.55}
+.row{display:grid;grid-template-columns:36px minmax(0,1fr) auto;gap:10px;align-items:center;width:100%;text-align:left;border:0;border-bottom:1px solid var(--line);background:none;padding:14px 14px 14px 6px;min-height:72px}
+.row:last-child{border-bottom:0}
+.row:active{background:var(--blueBg)}
+.av{font:700 26px/1 Caveat,cursive;color:var(--mut);text-align:center}
+.nm{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-left:8px}
+.sub{font-size:13px;color:var(--mut);padding-left:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.val{text-align:right;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tag{display:inline-block;font-size:12px;font-weight:600;padding:2px 8px;border-radius:10px;margin-top:3px}
+.t-v{background:var(--redBg);color:var(--red)}.t-h{background:var(--ambBg);color:var(--amb)}.t-p{background:var(--blueBg);color:var(--blue)}.t-o{color:var(--mut);padding-inline:0}
+.paid .val{text-decoration:line-through;color:var(--mut)}
+.empty{padding:40px 20px 40px 60px;color:var(--mut)}
+.empty b{display:block;font:700 30px/1.1 Caveat,cursive;color:var(--ink);margin-bottom:6px}
+.fab{position:fixed;right:max(18px,env(safe-area-inset-right));bottom:max(22px,env(safe-area-inset-bottom));height:58px;padding:0 22px;border-radius:29px;border:0;background:var(--blue);color:var(--paper);font-weight:700;font-size:17px;box-shadow:var(--sh)}
+dialog{border:0;padding:0;width:100%;max-width:640px;margin:auto auto 0;max-height:92vh;border-radius:22px 22px 0 0;background:var(--paper);color:var(--ink);box-shadow:var(--sh)}
+dialog::backdrop{background:#0008}
+@media(min-width:700px){dialog{margin:auto;border-radius:22px}}
+.sh{padding:18px 18px max(24px,env(safe-area-inset-bottom))}
+.shh{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}
+.shh h2{font:700 32px/1.05 Caveat,cursive;margin:0;color:var(--blue)}
+label{display:block;font-size:14px;font-weight:600;margin:12px 0 4px}
+label span{font-weight:400;color:var(--mut)}
+.in{width:100%;min-height:46px;border-radius:12px;border:1px solid var(--line);background:var(--bg);padding:10px 12px;font-size:16px}
+textarea.in{min-height:120px;resize:vertical;line-height:1.45}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+.quick{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.quick button{height:36px;padding:0 12px;border-radius:18px;border:1px solid var(--line);background:none;font-size:14px}
+.btn{height:50px;border-radius:14px;border:1px solid var(--line);background:var(--bg);font-weight:600;padding:0 16px;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;color:var(--ink);font-size:16px}
+.pri{background:var(--blue);color:var(--paper);border-color:var(--blue)}
+.wa{background:#1f9d55;color:#fff;border-color:#1f9d55}
+.dang{color:var(--red)}
+.full{width:100%}
+.acts{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;margin-top:10px}
+.big{font:700 clamp(34px,9vw,46px)/1 Inter,sans-serif;font-variant-numeric:tabular-nums;margin:6px 0 2px;white-space:nowrap}
+.meta{color:var(--mut);font-size:14px}
+.box{border:1px solid var(--line);border-radius:14px;padding:12px;margin-top:14px}
+.box h3{margin:0 0 8px;font-size:15px}
+.seg{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+.seg button{height:38px;padding:0 12px;border-radius:19px;border:1px solid var(--line);background:none;font-size:14px}
+.seg button[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.pg{display:flex;justify-content:space-between;font-size:14px;padding:6px 0;border-bottom:1px dashed var(--line)}
+.pg:last-child{border:0}
+.hint{font-size:13px;color:var(--mut);margin:6px 0 0}
+.toast{position:fixed;left:50%;bottom:96px;transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:12px 16px;border-radius:12px;font-size:15px;display:none;gap:14px;align-items:center;z-index:9;max-width:92vw}
+.toast button{border:0;background:none;color:var(--paper);font-weight:700;text-decoration:underline}
+.modo{display:grid;grid-template-columns:1fr 1fr;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:4px;margin-bottom:12px}
+.modo button{height:44px;border:0;border-radius:11px;background:none;font-weight:600;font-size:16px;color:var(--mut)}
+.modo button[aria-pressed=true]{background:var(--blue);color:var(--paper)}
+body.devo .modo button[aria-pressed=true]{background:var(--red)}
+body.devo h1,body.devo .shh h2{color:var(--red)}
+body.devo .fab,body.devo .pri{background:var(--red);border-color:var(--red)}
+.pchips{display:flex;flex-wrap:wrap;gap:6px}
+.pchips button{min-height:40px;padding:4px 12px;border-radius:12px;border:1px solid var(--line);background:var(--bg);font-size:14px;text-align:left}
+.pchips b{display:block;font-size:13px;color:var(--blue);font-variant-numeric:tabular-nums}
+.pchips .nada{font-size:13px;color:var(--mut)}
+.ci{display:grid;grid-template-columns:minmax(0,1fr) auto auto auto;gap:6px;align-items:center;padding:6px 0;border-bottom:1px dashed var(--line);font-size:15px}
+.ci button{width:36px;height:36px;border-radius:10px;border:1px solid var(--line);background:var(--bg);font-weight:700}
+.ci .q{min-width:22px;text-align:center;font-weight:700}
+.addp{margin-top:8px}.addp summary{cursor:pointer;color:var(--blue);font-size:14px;font-weight:600;padding:6px 0}
+.pl{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px dashed var(--line)}
+.pl button{border:0;background:none;color:var(--red);font-size:14px;min-height:36px}
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+@media(prefers-reduced-motion:no-preference){dialog[open]{animation:up .22s ease-out}@keyframes up{from{transform:translateY(40px);opacity:.4}}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Caderno de Fiados</h1>
+    <button class="ic" id="bCfg" aria-label="Ajustes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button>
+  </header>
+  <p class="sync" id="sync">Carregando…</p>
+  <div class="modo" id="modo"><button data-m="receber" aria-pressed="true">Me devem</button><button data-m="devo" aria-pressed="false">Eu devo</button></div>
+  <div class="tot">
+    <div><small id="lA">A receber</small><b id="tA">R$ 0,00</b></div>
+    <div class="r"><small>Vencidos</small><b id="tV">R$ 0,00</b></div>
+    <div><small id="lH">Cobrar hoje</small><b id="tH">0</b></div>
+  </div>
+  <div class="chips" id="chips">
+    <button class="chip" data-f="cobrar" aria-pressed="true" id="chip1">Cobrar agora</button>
+    <button class="chip" data-f="aberto" aria-pressed="false">Em aberto</button>
+    <button class="chip" data-f="pago" aria-pressed="false">Pagos</button>
+    <button class="chip" data-f="todos" aria-pressed="false">Todos</button>
+  </div>
+  <input class="search" id="q" type="search" placeholder="Buscar cliente ou descrição" autocomplete="off">
+  <div class="book" id="list"></div>
+</div>
+<button class="fab" id="bNovo">+ Novo fiado</button>
+
+<dialog id="dForm"><form class="sh" id="fForm">
+  <div class="shh"><h2 id="fTit">Novo fiado</h2><button type="button" class="ic" data-close aria-label="Fechar">✕</button></div>
+  <label for="fNome" id="lNome">Cliente</label>
+  <input class="in" id="fNome" list="dlNomes" required autocomplete="off" placeholder="Nome">
+  <datalist id="dlNomes"></datalist>
+  <label for="fTel">WhatsApp <span>(com DDD)</span></label>
+  <input class="in" id="fTel" type="tel" inputmode="tel" placeholder="(99) 98400-0000">
+  <div id="prodBox">
+  <label>Produtos <span>(toque para somar, ou digite abaixo)</span></label>
+  <div class="pchips" id="pChips"></div>
+  <div id="cart"></div>
+  <details class="addp"><summary>+ Cadastrar produto</summary>
+    <div class="two" style="margin-top:8px"><input class="in" id="npNome" placeholder="Nome do produto"><input class="in" id="npPreco" inputmode="decimal" placeholder="Preço"></div>
+    <button type="button" class="btn full" id="bAddP" style="margin-top:8px">Salvar produto</button></details>
+  </div>
+  <label for="fDesc" id="lDesc">O que levou</label>
+  <input class="in" id="fDesc" placeholder="Ex.: 2 fardos de água, gás">
+  <div class="two">
+    <div><label for="fVal">Valor total (R$)</label><input class="in" id="fVal" inputmode="decimal" required placeholder="0,00"></div>
+    <div><label for="fData">Data da compra</label><input class="in" id="fData" type="date" required></div>
+  </div>
+  <label for="fAv" id="lAv">Deu de entrada / AV <span>(se pagou uma parte)</span></label>
+  <input class="in" id="fAv" inputmode="decimal" placeholder="0,00">
+  <p class="hint" id="falta"></p>
+  <label for="fVenc">Data do lembrete / vencimento</label>
+  <input class="in" id="fVenc" type="date" required>
+  <div class="quick" id="qVenc"><button type="button" data-d="7">+7 dias</button><button type="button" data-d="15">+15 dias</button><button type="button" data-d="30">+30 dias</button><button type="button" data-d="dia5">Dia 5</button><button type="button" data-d="dia10">Dia 10</button></div>
+  <label for="fObs">Anotação <span>(opcional)</span></label>
+  <input class="in" id="fObs" placeholder="Ex.: paga quando receber">
+  <button class="btn pri full" style="margin-top:18px">Salvar fiado</button>
+</form></dialog>
+
+<dialog id="dDet"><div class="sh" id="det"></div></dialog>
+
+<dialog id="dCfg"><div class="sh">
+  <div class="shh"><h2>Ajustes</h2><button type="button" class="ic" data-close aria-label="Fechar">✕</button></div>
+  <label for="cLoja">Nome do seu negócio</label><input class="in" id="cLoja" placeholder="Ex.: Mercadinho do Gu">
+  <label for="cPix">Sua chave Pix <span>(vai na mensagem)</span></label><input class="in" id="cPix" placeholder="CPF, celular, e-mail ou chave aleatória">
+  <p class="hint">Nas mensagens você pode usar: {nome} {saldo} {valor} {venc} {desc} {pix} {loja} {dias}</p>
+  <label for="cT1">Mensagem gentil <span>(antes de vencer)</span></label><textarea class="in" id="cT1"></textarea>
+  <label for="cT2">Mensagem de lembrete <span>(venceu há pouco)</span></label><textarea class="in" id="cT2"></textarea>
+  <label for="cT3">Mensagem firme <span>(atrasado mais de 7 dias)</span></label><textarea class="in" id="cT3"></textarea>
+  <label for="cT4">Agradecimento <span>(quando paga)</span></label><textarea class="in" id="cT4"></textarea>
+  <button class="btn pri full" id="bSaveCfg" style="margin-top:14px">Salvar ajustes</button>
+  <div class="box"><h3>Produtos cadastrados</h3><div id="pList"></div>
+    <div class="two" style="margin-top:8px"><input class="in" id="np2Nome" placeholder="Nome do produto"><input class="in" id="np2Preco" inputmode="decimal" placeholder="Preço"></div>
+    <button class="btn full" id="bAddP2" style="margin-top:8px">Adicionar produto</button></div>
+  <div class="box"><h3>Lembretes no calendário</h3>
+    <p class="hint" style="margin:0 0 8px">Gera um arquivo com o lembrete de todos os fiados em aberto para o Calendário do iPhone (às 9h do dia).</p>
+    <button class="btn full" id="bIcsAll">Baixar todos os lembretes</button></div>
+  <div class="box"><h3>Cópia de segurança</h3>
+    <p class="hint" id="bkInfo" style="margin:0 0 8px"></p>
+    <button class="btn pri full" id="bExpF" hidden>Baixar arquivo de backup</button>
+    <div class="acts"><button class="btn" id="bExp">Copiar backup</button><button class="btn" id="bImpShow">Restaurar</button></div>
+    <div id="impBox" hidden><label class="btn full" style="margin-top:8px">Escolher arquivo de backup<input type="file" id="impFile" accept=".json,application/json,text/plain" hidden></label><textarea class="in" id="impTxt" placeholder="Cole aqui o backup" style="margin-top:8px"></textarea><button class="btn full" id="bImp" style="margin-top:8px">Restaurar este backup</button></div>
+  </div>
+</div></dialog>
+
+<div class="toast" id="toast" role="status"><span id="tMsg"></span><button id="tUndo" hidden>Desfazer</button></div>
+
+<script>
+{
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const brl=n=>(+n||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+const iso=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const hoje=()=>iso(new Date());
+const addD=(s,n)=>{const d=new Date((s||hoje())+'T12:00');d.setDate(d.getDate()+n);return iso(d)};
+const fmtD=s=>s?s.split('-').reverse().join('/'):'—';
+const diasAte=s=>Math.round((new Date(s+'T12:00')-new Date(hoje()+'T12:00'))/864e5);
+const num=v=>{v=String(v||'').replace(/[^\d,.-]/g,'');if(v.includes(','))v=v.replace(/\./g,'').replace(',','.');return Math.round(parseFloat(v)*100)/100||0};
+const DEF={loja:'',pix:'',
+t1:'Oi, {nome}! Tudo bem? 😊\nPassando só para lembrar do seu fiado na {loja}: {saldo} ({desc}), com vencimento em {venc}.\nPode pagar pelo Pix: {pix}\nQualquer coisa é só chamar. Obrigado!',
+t2:'Olá, {nome}! Seu fiado de {saldo} ({desc}) venceu em {venc}. Consegue acertar hoje?\nPix: {pix}\nObrigado! {loja}',
+t3:'{nome}, o seu débito de {saldo} na {loja} está em atraso há {dias} dias (venceu em {venc}). Peço que regularize até amanhã.\nPix: {pix}\nAguardo seu retorno.',
+t4:'Oi, {nome}! Recebi seu pagamento, o fiado de {valor} está quitado. Muito obrigado pela confiança! 🙏 {loja}'};
+let items={},cfg={...DEF},filtro='cobrar',col=null,dl=null,lastDel=null,curId=null,tom=null,modo='receber',cart=[],fTipo='receber';
+const tp=f=>f.tipo==='devo'?'devo':'receber';
+const prods=()=>Array.isArray(cfg.prods)?cfg.prods:[];
+
+/* ---------- armazenamento ---------- */
+const LK='caderno-fiados-v1';
+const saveLocal=()=>{try{localStorage.setItem(LK,JSON.stringify({items,cfg}))}catch(e){}};
+try{const l=JSON.parse(localStorage.getItem(LK)||'null');if(l){items=l.items||{};cfg={...DEF,...l.cfg}}}catch(e){}
+const setSync=t=>$('#sync').textContent=t;
+async function put(id,obj){if(!col)return;try{await col.doc(id).set(obj)}catch(e){toast(e&&e.code==='quota_exceeded'?'Limite de armazenamento atingido':'Não salvou na nuvem, ficou só neste aparelho')}}
+async function rm(id){if(!col)return;try{await col.doc(id).delete()}catch(e){}}
+function salvar(f){items[f.id]=f;saveLocal();render();put(f.id,f)}
+function apagar(id){lastDel=items[id];delete items[id];saveLocal();render();rm(id);toast('Fiado apagado',()=>{salvar(lastDel);lastDel=null})}
+
+/* ---------- cálculo ---------- */
+const pago=f=>(f.pagos||[]).reduce((a,p)=>a+(+p.v||0),0);
+const saldo=f=>Math.max(0,Math.round((f.valor-pago(f))*100)/100);
+const st=f=>{if(saldo(f)<=0)return'pago';const d=diasAte(f.venc);return d<0?'venc':d===0?'hoje':'ok'};
+const tagHtml=f=>{const s=st(f),d=diasAte(f.venc);return s==='pago'?'<span class="tag t-p">Pago</span>':s==='venc'?`<span class="tag t-v">Vencido há ${-d} dia${d===-1?'':'s'}</span>`:s==='hoje'?`<span class="tag t-h">${tp(f)==='devo'?'Pagar':'Cobrar'} hoje</span>`:`<span class="tag t-o">Lembrete ${fmtD(f.venc)}</span>`};
+
+/* ---------- lista ---------- */
+function render(){
+  const D=modo==='devo';document.body.classList.toggle('devo',D);
+  $('#lA').textContent=D?'Eu devo':'A receber';$('#lH').textContent=D?'Pagar hoje':'Cobrar hoje';
+  $('#chip1').textContent=D?'Pagar agora':'Cobrar agora';$('#bNovo').textContent=D?'+ Anotar o que devo':'+ Novo fiado';
+  const all=Object.values(items).filter(f=>tp(f)===modo),ab=all.filter(f=>st(f)!=='pago');
+  $('#tA').textContent=brl(ab.reduce((a,f)=>a+saldo(f),0));
+  $('#tV').textContent=brl(ab.filter(f=>st(f)==='venc').reduce((a,f)=>a+saldo(f),0));
+  $('#tH').textContent=ab.filter(f=>st(f)!=='ok').length;
+  const q=$('#q').value.trim().toLowerCase();
+  let ls=all.filter(f=>filtro==='todos'||(filtro==='pago'?st(f)==='pago':filtro==='aberto'?st(f)!=='pago':['venc','hoje'].includes(st(f))));
+  if(q)ls=ls.filter(f=>(f.nome+' '+(f.desc||'')+' '+(f.obs||'')).toLowerCase().includes(q));
+  ls.sort((a,b)=>filtro==='pago'?(b.pagoEm||'').localeCompare(a.pagoEm||''):a.venc.localeCompare(b.venc));
+  $('#list').innerHTML=ls.length?ls.map(f=>`<button class="row${st(f)==='pago'?' paid':''}" data-id="${esc(f.id)}"><span class="av">${esc((f.nome||'?')[0].toUpperCase())}</span><span><div class="nm">${esc(f.nome)}</div><div class="sub">${esc(f.desc||(D?'Conta':'Fiado'))} · ${fmtD(f.data)}</div></span><span class="val">${brl(st(f)==='pago'?f.valor:saldo(f))}<br>${tagHtml(f)}</span></button>`).join('')
+  :`<div class="empty"><b>${filtro==='cobrar'&&!q?(D?'Nada para pagar hoje':'Ninguém para cobrar hoje'):'Nada por aqui'}</b>${all.length?'Troque o filtro acima para ver os outros.':(D?'Toque em “+ Anotar o que devo” para registrar uma conta sua.':'Toque em “+ Novo fiado” para anotar a primeira conta.')}</div>`;
+  $('#dlNomes').innerHTML=[...new Set(all.map(f=>f.nome))].map(n=>`<option value="${esc(n)}">`).join('');
+}
+
+/* ---------- formulário ---------- */
+function renderCart(){
+  $('#pChips').innerHTML=prods().length?prods().map((p,i)=>`<button type="button" data-p="${i}">${esc(p.nome)}<b>${brl(p.preco)}</b></button>`).join(''):'<span class="nada">Nenhum produto cadastrado ainda.</span>';
+  $('#cart').innerHTML=cart.map((c,i)=>`<div class="ci"><span>${esc(c.nome)} · ${brl(c.preco*c.q)}</span><button type="button" data-m="${i}" aria-label="Menos">−</button><span class="q">${c.q}</span><button type="button" data-a="${i}" aria-label="Mais">+</button></div>`).join('');
+}
+function syncCart(){if(!cart.length)return;
+  $('#fVal').value=cart.reduce((a,c)=>a+c.preco*c.q,0).toFixed(2).replace('.',',');
+  $('#fDesc').value=cart.map(c=>c.q+'x '+c.nome).join(', ');falta()}
+function falta(){const v=num($('#fVal').value),a=num($('#fAv').value),D=fTipo==='devo';
+  $('#falta').textContent=a>0&&v>0?(a>=v?(D?'Isso quita tudo.':'Isso quita tudo — vai como pago.'):(D?'Ainda falta pagar: ':'Fica no fiado: ')+brl(v-a)):''}
+function addProd(n,p){n=n.trim();p=num(p);if(!n||!p){toast('Coloque nome e preço');return false}
+  cfg={...cfg,prods:[...prods(),{nome:n,preco:p}].sort((a,b)=>a.nome.localeCompare(b.nome))};saveLocal();put('cfg',cfg);toast('Produto salvo');return true}
+$('#pChips').addEventListener('click',e=>{const b=e.target.closest('[data-p]');if(!b)return;const p=prods()[+b.dataset.p];
+  const c=cart.find(x=>x.nome===p.nome);c?c.q++:cart.push({nome:p.nome,preco:p.preco,q:1});renderCart();syncCart()});
+$('#cart').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+  if(b.dataset.a!=null)cart[+b.dataset.a].q++;else{const i=+b.dataset.m;if(--cart[i].q<=0)cart.splice(i,1)}
+  renderCart();if(cart.length)syncCart();else{$('#fVal').value='';$('#fDesc').value='';falta()}});
+$('#bAddP').addEventListener('click',()=>{if(addProd($('#npNome').value,$('#npPreco').value)){$('#npNome').value='';$('#npPreco').value='';renderCart()}});
+$('#fVal').addEventListener('input',falta);$('#fAv').addEventListener('input',falta);
+function abrirForm(f){
+  fTipo=f?tp(f):modo;const D=fTipo==='devo';cart=[];renderCart();
+  $('#prodBox').hidden=D;$('#lNome').textContent=D?'Para quem eu devo':'Cliente';$('#lDesc').textContent=D?'Do que é':'O que levou';
+  $('#lAv').innerHTML=D?'Já paguei uma parte <span>(se deu entrada)</span>':'Deu de entrada / AV <span>(se pagou uma parte)</span>';
+  const av=(f?.pagos||[]).find(p=>p.av);$('#fAv').value=av?String(av.v).replace('.',','):'';
+  curId=f?f.id:null;$('#fTit').textContent=f?'Editar':(D?'Anotar o que devo':'Novo fiado');
+  $('#fNome').value=f?.nome||'';$('#fTel').value=f?.tel||'';$('#fVal').value=f?String(f.valor).replace('.',','):'';
+  $('#fData').value=f?.data||hoje();$('#fVenc').value=f?.venc||addD(hoje(),30);$('#fDesc').value=f?.desc||'';$('#fObs').value=f?.obs||'';
+  falta();$('#dDet').close();$('#dForm').showModal();
+}
+$('#fNome').addEventListener('change',()=>{const n=$('#fNome').value.trim().toLowerCase();const o=Object.values(items).find(f=>f.nome.toLowerCase()===n&&f.tel&&tp(f)===fTipo);if(o&&!$('#fTel').value)$('#fTel').value=o.tel});
+$('#qVenc').addEventListener('click',e=>{const d=e.target.dataset.d;if(!d)return;const base=$('#fData').value||hoje();
+  if(d.startsWith('dia')){const dia=+d.slice(3),b=new Date(base+'T12:00');let t=new Date(b.getFullYear(),b.getMonth(),dia,12);if(t<=b)t=new Date(b.getFullYear(),b.getMonth()+1,dia,12);$('#fVenc').value=iso(t)}else $('#fVenc').value=addD(base,+d)});
+$('#fForm').addEventListener('submit',e=>{e.preventDefault();const v=num($('#fVal').value);if(!v){toast('Coloque o valor');return}
+  const old=curId?items[curId]:null;
+  const f={...(old||{pagos:[],criado:Date.now()}),id:old?.id||('f-'+Date.now().toString(36)+Math.random().toString(36).slice(2,6)),
+    tipo:fTipo,nome:$('#fNome').value.trim(),tel:$('#fTel').value.trim(),valor:v,data:$('#fData').value,venc:$('#fVenc').value,desc:$('#fDesc').value.trim(),obs:$('#fObs').value.trim()};
+  if(cart.length)f.itens=cart.map(c=>({...c}));
+  const av=Math.min(num($('#fAv').value),v);
+  f.pagos=(f.pagos||[]).filter(p=>!p.av);if(av>0)f.pagos.unshift({v:av,d:f.data,av:true});
+  if(saldo(f)>0)delete f.pagoEm;else if(!f.pagoEm)f.pagoEm=hoje();
+  salvar(f);$('#dForm').close();toast(old?'Atualizado':fTipo==='devo'?'Conta anotada':'Fiado anotado');abrirDet(f.id)});
+
+/* ---------- mensagem ---------- */
+const tomAuto=f=>{const s=st(f);if(s==='pago')return't4';const d=diasAte(f.venc);return d>=0?'t1':d>=-7?'t2':'t3'};
+function msg(f,t){const loja=cfg.loja||'nossa loja',d=diasAte(f.venc);
+  const map={pago:brl(pago(f)),nome:(f.nome||'').split(' ')[0],saldo:brl(saldo(f)),valor:brl(f.valor),venc:fmtD(f.venc),desc:f.desc||'compras',pix:cfg.pix,loja,dias:String(Math.max(0,-d))};
+  return (cfg[t]||DEF[t]).split('\n').filter(l=>!(l.includes('{pix}')&&!cfg.pix)).join('\n').replace(/\{(\w+)\}/g,(m,k)=>k in map?map[k]:m).trim()}
+const telWa=t=>{let d=String(t||'').replace(/\D/g,'');if(!d)return'';if(d.length<=11)d='55'+d;return d};
+const waLink=(f,m)=>`https://wa.me/${telWa(f.tel)}?text=${encodeURIComponent(m)}`;
+
+/* ---------- lembrete calendário ---------- */
+const icsTxt=s=>String(s).replace(/\\/g,'\\\\').replace(/\n/g,'\\n').replace(/([,;])/g,'\\$1');
+function vevent(f){const d=f.venc.replace(/-/g,''),now=new Date().toISOString().replace(/[-:]/g,'').slice(0,15)+'Z';
+  return ['BEGIN:VEVENT','UID:'+f.id+'@caderno-fiados','DTSTAMP:'+now,'DTSTART:'+d+'T090000','DTEND:'+d+'T093000',
+  'SUMMARY:'+icsTxt((tp(f)==='devo'?'Pagar ':'Cobrar ')+f.nome+' – '+brl(saldo(f))),'DESCRIPTION:'+icsTxt((f.desc||'Fiado')+' · compra em '+fmtD(f.data)+(f.tel?' · WhatsApp '+f.tel:'')),
+  'BEGIN:VALARM','TRIGGER:PT0M','ACTION:DISPLAY','DESCRIPTION:'+icsTxt('Cobrar '+f.nome),'END:VALARM','END:VEVENT'].join('\r\n')}
+const ics=fs=>['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Caderno de Fiados//PT','CALSCALE:GREGORIAN',...fs.map(vevent),'END:VCALENDAR'].join('\r\n');
+async function baixar(nome,txt){if(!dl){baixarArq(nome,txt,'text/calendar');toast('Abra o arquivo baixado e toque em “Adicionar ao Calendário”');return}
+  try{await dl.save({filename:nome,data:new Blob([txt],{type:'text/calendar'})});toast('Abra o arquivo e toque em “Adicionar ao Calendário”')}catch(e){toast('Download cancelado')}}
+const gcal=f=>{const d=f.venc.replace(/-/g,'');return`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent((tp(f)==='devo'?'Pagar ':'Cobrar ')+f.nome+' – '+brl(saldo(f)))}&dates=${d}T090000/${d}T093000&details=${encodeURIComponent(f.desc||'Fiado')}`};
+
+/* ---------- detalhe ---------- */
+function abrirDet(id){curId=id;tom=null;renderDet();if(!$('#dDet').open)$('#dDet').showModal()}
+function renderDet(){const f=items[curId];if(!f){$('#dDet').close();return}
+  tom=tom||tomAuto(f);const m=msg(f,tom),s=st(f);
+  const D=tp(f)==='devo',pg=pago(f);
+  const outros=Object.values(items).filter(o=>o.id!==f.id&&tp(o)===tp(f)&&o.nome.toLowerCase()===f.nome.toLowerCase()&&st(o)!=='pago');
+  const totCli=outros.reduce((a,o)=>a+saldo(o),0)+saldo(f);
+  $('#det').innerHTML=`<div class="shh"><h2>${esc(f.nome)}</h2><button type="button" class="ic" data-close aria-label="Fechar">✕</button></div>
+  <div class="meta">${s==='pago'?'Quitado':D?'Eu ainda devo':'Falta pagar'}</div>
+  <div class="big">${brl(s==='pago'?f.valor:saldo(f))}</div>
+  <div class="meta">${esc(f.desc||(D?'Conta':'Fiado'))} · ${D?'desde':'comprou em'} ${fmtD(f.data)} · ${tagHtml(f)}</div>
+  ${pg>0&&s!=='pago'?`<p class="hint">Total ${brl(f.valor)} · já ${D?'paguei':'pagou'} ${brl(pg)}</p>`:''}
+  ${f.obs?`<p class="hint">📝 ${esc(f.obs)}</p>`:''}
+  ${outros.length?`<p class="hint">${D?'Devo mais':'Este cliente tem mais'} ${outros.length} conta${outros.length>1?'s':''} em aberto ${D?'para essa pessoa':''} — total ${brl(totCli)}.</p>`:''}
+  ${D?'':`<div class="box"><h3>Mensagem de cobrança</h3>
+    <div class="seg" id="seg">${[['t1','Gentil'],['t2','Lembrete'],['t3','Firme'],['t4','Agradecer']].map(([k,n])=>`<button data-t="${k}" aria-pressed="${k===tom}">${n}</button>`).join('')}</div>
+    <textarea class="in" id="msgTxt">${esc(m)}</textarea>
+    <div class="acts"><a class="btn wa" id="bWa" href="${esc(waLink(f,m))}" target="_blank" rel="noopener">WhatsApp</a><button class="btn" id="bCopy">Copiar</button></div>
+    ${f.tel?`<p class="hint">Vai para ${esc(f.tel)}. Você confere e toca em enviar no WhatsApp.</p>`:'<p class="hint">Sem número salvo: o WhatsApp vai pedir para escolher o contato.</p>'}
+  </div>`}
+  ${s!=='pago'?`<div class="box"><h3>${D?'Pagar':'Receber pagamento'}</h3>
+    <div class="two"><input class="in" id="pVal" inputmode="decimal" placeholder="${D?'Valor que paguei':'Valor recebido'}"><button class="btn" id="bParc">Abater</button></div>
+    <button class="btn pri full" id="bQuit" style="margin-top:8px">${D?'Paguei tudo':'Recebi tudo'} (${brl(saldo(f))})</button></div>
+  <div class="box"><h3>Lembrete</h3><div class="meta">Dia ${fmtD(f.venc)}</div>
+    <div class="quick" id="adia"><button data-d="1">Amanhã</button><button data-d="3">+3 dias</button><button data-d="7">+7 dias</button><button data-d="15">+15 dias</button></div>
+    <div class="acts">${dl||!col?'<button class="btn" id="bIcs">Calendário iPhone</button>':''}<a class="btn" href="${esc(gcal(f))}" target="_blank" rel="noopener">Google Agenda</a></div></div>`:''}
+  ${(f.pagos||[]).length?`<div class="box"><h3>Pagamentos</h3>${f.pagos.map((p,i)=>`<div class="pg"><span>${fmtD(p.d)}${p.av?' · Entrada (AV)':''}</span><span>${brl(p.v)} <button class="dang" data-rp="${i}" style="border:0;background:none;font-size:13px">desfazer</button></span></div>`).join('')}</div>`:''}
+  <div class="acts" style="margin-top:16px"><button class="btn" id="bEdit">Editar</button><button class="btn dang" id="bDel">Apagar</button></div>`;
+}
+function pagar(f,v){if(v<=0)return;f={...f,pagos:[...(f.pagos||[]),{v:Math.min(v,saldo(f)),d:hoje()}]};
+  const D=tp(f)==='devo';if(saldo(f)<=0){f.pagoEm=hoje();tom='t4'}salvar(f);renderDet();toast(saldo(f)<=0?(D?'Conta quitada!':'Quitado! Mande o agradecimento 🙂'):'Pagamento abatido')}
+$('#det').addEventListener('click',async e=>{const f=items[curId];if(!f)return;const t=e.target.closest('button');if(!t)return;
+  if(t.dataset.t){tom=t.dataset.t;renderDet()}
+  else if(t.id==='bCopy'){try{await navigator.clipboard.writeText($('#msgTxt').value);toast('Mensagem copiada')}catch(_){$('#msgTxt').select();toast('Selecionei o texto, toque em Copiar')}}
+  else if(t.id==='bParc')pagar(f,num($('#pVal').value));
+  else if(t.id==='bQuit')pagar(f,saldo(f));
+  else if(t.dataset.rp!=null){const p=[...f.pagos];p.splice(+t.dataset.rp,1);const n={...f,pagos:p};delete n.pagoEm;tom=null;salvar(n);renderDet()}
+  else if(t.closest('#adia')&&t.dataset.d){salvar({...f,venc:addD(hoje(),+t.dataset.d)});tom=null;renderDet();toast('Lembrete adiado')}
+  else if(t.id==='bIcs')baixar('cobrar-'+f.nome.replace(/\W+/g,'-')+'.ics',ics([f]));
+  else if(t.id==='bEdit')abrirForm(f);
+  else if(t.id==='bDel'){if(t.dataset.ok){$('#dDet').close();apagar(f.id)}else{t.dataset.ok=1;t.textContent='Toque de novo para apagar';setTimeout(()=>{if(t.isConnected){delete t.dataset.ok;t.textContent='Apagar'}},3000)}}
+});
+$('#det').addEventListener('input',e=>{if(e.target.id==='msgTxt'&&$('#bWa')){const f=items[curId];$('#bWa').href=waLink(f,e.target.value)}});
+
+/* ---------- ajustes ---------- */
+function renderPList(){$('#pList').innerHTML=prods().length?prods().map((p,i)=>`<div class="pl"><span>${esc(p.nome)} · <b>${brl(p.preco)}</b></span><button data-rp="${i}">Remover</button></div>`).join(''):'<p class="hint" style="margin:0">Nenhum produto ainda.</p>'}
+$('#pList').addEventListener('click',e=>{const b=e.target.closest('[data-rp]');if(!b)return;const l=[...prods()];l.splice(+b.dataset.rp,1);cfg={...cfg,prods:l};saveLocal();put('cfg',cfg);renderPList()});
+$('#bAddP2').addEventListener('click',()=>{if(addProd($('#np2Nome').value,$('#np2Preco').value)){$('#np2Nome').value='';$('#np2Preco').value='';renderPList()}});
+function abrirCfg(){renderPList();bkInfo();$('#bExpF').hidden=!!col;for(const k of['loja','pix','t1','t2','t3','t4'])$('#c'+(k[0]==='t'?'T'+k[1]:k[0].toUpperCase()+k.slice(1))).value=cfg[k]||'';$('#impBox').hidden=true;$('#dCfg').showModal()}
+$('#bSaveCfg').addEventListener('click',()=>{cfg={...cfg,loja:$('#cLoja').value.trim(),pix:$('#cPix').value.trim(),t1:$('#cT1').value,t2:$('#cT2').value,t3:$('#cT3').value,t4:$('#cT4').value};
+  saveLocal();put('cfg',cfg);$('#dCfg').close();toast('Ajustes salvos')});
+$('#bIcsAll').addEventListener('click',()=>{const ab=Object.values(items).filter(f=>st(f)!=='pago');if(!ab.length){toast('Nenhum fiado em aberto');return}baixar('lembretes-fiados.ics',ics(ab))});
+const marcaBk=()=>{try{localStorage.setItem(LK+'-bk',hoje())}catch(e){}bkInfo()};
+function bkInfo(){let u=null;try{u=localStorage.getItem(LK+'-bk')}catch(e){}
+  $('#bkInfo').textContent=col?'Seus dados já ficam salvos na sua conta. O backup é uma garantia extra.':'Os dados ficam só neste aparelho. Faça um backup toda semana. '+(u?'Último backup: '+fmtD(u)+'.':'Você ainda não fez nenhum backup.')}
+$('#bExp').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(JSON.stringify({items,cfg}));marcaBk();toast('Backup copiado — cole nas Notas ou no WhatsApp')}catch(e){toast('Não consegui copiar')}});
+$('#bExpF').addEventListener('click',()=>{baixarArq('backup-fiados-'+hoje()+'.json',JSON.stringify({items,cfg}),'application/json');marcaBk()});
+$('#impFile').addEventListener('change',async e=>{const f=e.target.files[0];if(f){$('#impTxt').value=await f.text();$('#bImp').click()}e.target.value=''});
+function baixarArq(nome,txt,tipo){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([txt],{type:tipo}));a.download=nome;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},4000)}
+$('#bImpShow').addEventListener('click',()=>$('#impBox').hidden=false);
+$('#bImp').addEventListener('click',async()=>{try{const d=JSON.parse($('#impTxt').value);const its=Object.values(d.items||{}).filter(f=>f&&typeof f.id==='string'&&f.id.startsWith('f-')&&f.nome);
+  for(const f of its){items[f.id]=f;await put(f.id,f)}if(d.cfg){cfg={...DEF,...d.cfg};await put('cfg',cfg)}saveLocal();render();$('#dCfg').close();toast(its.length+' fiados restaurados')}catch(e){toast('Backup inválido')}});
+
+/* ---------- geral ---------- */
+let tT;function toast(t,undo){$('#tMsg').textContent=t;$('#tUndo').hidden=!undo;$('#tUndo').onclick=()=>{undo();$('#toast').style.display='none'};$('#toast').style.display='flex';clearTimeout(tT);tT=setTimeout(()=>$('#toast').style.display='none',undo?6000:2600)}
+document.addEventListener('click',e=>{if(e.target.closest('[data-close]'))e.target.closest('dialog').close();else if(e.target.tagName==='DIALOG')e.target.close()});
+$('#chips').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;filtro=b.dataset.f;document.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed',c===b));render()});
+$('#q').addEventListener('input',render);
+$('#modo').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;modo=b.dataset.m;document.querySelectorAll('#modo button').forEach(x=>x.setAttribute('aria-pressed',x===b));render()});
+$('#list').addEventListener('click',e=>{const r=e.target.closest('.row');if(r)abrirDet(r.dataset.id)});
+$('#bNovo').addEventListener('click',()=>abrirForm(null));
+$('#bCfg').addEventListener('click',abrirCfg);
+render();
+setSync(Object.keys(items).length?'Salvo neste aparelho':'Pronto para anotar');
+
+(async()=>{if(!window.claude||!claude.use){setSync('Salvo neste iPhone · faça backup nos Ajustes de vez em quando');return}
+  try{const [d,u,w]=await Promise.all([claude.use('db'),claude.use('user'),claude.use('downloads')]);dl=w;
+    const uid=u?await u.id():null;if(!d||!uid){setSync('Salvo só neste aparelho');render();return}
+    col=d.collection('data/users/'+uid);let first=true;
+    const tm=setTimeout(()=>setSync('Sem conexão — mostrando o que está no aparelho'),10000);
+    col.onSnapshot(async snap=>{
+      if(!snap.metadata.fromCache){clearTimeout(tm);setSync('Salvo na sua conta ✓ (iPhone e computador)')}
+      if(first&&!snap.metadata.fromCache){first=false;
+        if(snap.empty&&Object.keys(items).length){for(const f of Object.values(items))await put(f.id,f);await put('cfg',cfg);return}}
+      const n={};let c=null;for(const doc of snap.docs){const v=doc.data();if(doc.id==='cfg')c=v;else if(doc.id.startsWith('f-'))n[doc.id]=v}
+      if(!snap.empty||!snap.metadata.fromCache){items=n;if(c)cfg={...DEF,...c};saveLocal();render();if($('#dDet').open&&!document.activeElement?.matches('textarea,input'))renderDet()}
+    },()=>{clearTimeout(tm);setSync('Salvo só neste aparelho');col=null});
+  }catch(e){setSync('Salvo só neste aparelho')}
+})();
+}
+</script>
+</body>
+</html>
